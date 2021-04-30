@@ -19,7 +19,7 @@ lori
 mitchell
 allen
 robinson
-simmons-----
+simmons	summer
 morgan
 clark	654321
 turner
@@ -36,11 +36,11 @@ young
 chris
 white
 ashley	ashley
-hall--
-price---
+hall
+price
 sanchez	dragon
 bryant	000000
-russell--
+russell
 campbell	monkey
 hill	123123
 terry
@@ -58,11 +58,11 @@ thomas	pepper
 foster	soccer
 amanda	amanda
 wayne	baseball
-murphy
+murphy	112233
 gray
 howard	football
 ramirez
-ross
+ross	computer
 wright
 daniel	daniel
 andrew
