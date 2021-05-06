@@ -47,8 +47,7 @@ def on_press(key):
         char = char.replace("Key.", "")  # strip char of 'Key.'
         word += '[' + char + ']'
     #cmd                    also known as the Windows key
-    #menu                   on Windows oriented keyboards
-    #                       Looks like a hamburger button, sometimes inside of a box and/or with a mouse.
+    #menu                   on Windows oriented keyboards. Looks like a hamburger button, sometimes inside of a box and/or with a mouse.
     #left,right,up,down     arrow keys
 
     #Print F#
@@ -61,19 +60,32 @@ def on_press(key):
 
     #numpad numbers
     elif hasattr(key, 'vk') and key.vk >= 96 and key.vk <=105:
-        #TODO: either fix this block, or make a separate elif statement for each digit
-        # num = f'{key}'
-        # num = num.replace("<", "")    #strip of <>
-        # num = num.replace(">", "")
-        # numInt = int(num)
-        # numInt -= 96
-        # word += numInt        #Crashes when you print numInt
-        word += '[numpad]'  #TODO: remove this
+        #TODO: fix this block and delete the code below
+        #num = f'{key}'
+        #num = num.replace("<", "")    #strip of <>
+        #num = num.replace(">", "")
+        #numInt = int(num)
+        #numInt -= 96
+        #word += numInt        #Crashes when you print numInt
+
+        #hacky version that works:
+        num = 0
+        if key.vk == 97: num = 1
+        elif key.vk == 98: num = 2
+        elif key.vk == 99: num = 3
+        elif key.vk == 100: num = 4
+        elif key.vk == 101: num = 5
+        elif key.vk == 102: num = 6
+        elif key.vk == 103: num = 7
+        elif key.vk == 104: num = 8
+        elif key.vk == 105: num = 9
+        word += num     #TODO: should we make note of whether this is a numpad button?
+
     #numpad decimal
     elif hasattr(key, 'vk') and key.vk == 110:
         word+='.'
 
-    #regular keys and F keys, and other unknown keys
+    #regular keys and other unknown keys
     else:
         char = f'{key}'
         char = char.replace("'","") #strip char of apostrophes
