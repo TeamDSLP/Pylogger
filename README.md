@@ -9,5 +9,10 @@ A keylogger written in Python for CS6348 Data & Applications Security
 - [ ] Logs the application keystrokes are being made in
 - [x] Accounts for different keyboard layouts (i.e., Dvorak)/onscreen keyboards
   - Accounts for Windows default on-screen keyboard. Unable to test other physical layouts.
-- [ ] Periodically takes a screenshot of whole screen
+- [x] Periodically takes a screenshot of whole screen
 - [x] Periodically sends the files or files’ contents over email
+
+Logger.pyw: Uses library pynput to store the keystrokes of the victim's keyboard. After 50 characters it sends an email with the keystroke information and also sends a screenshot of the main monitor of the victim
+
+Launch.bat: File that launches logger and IE if the properties of IE have been altered
+Launch.bat.txt: Text file of launch.bat so that it can be read by TA
