@@ -17,4 +17,4 @@ Logger.pyw: Uses library pynput to store the keystrokes of the victim's keyboard
 Launch.bat: File that launches logger and IE if the properties of IE have been altered
 Launch.bat.txt: Text file of launch.bat so that it can be read by TA
 
-Windows will try to delete the launch.bat scripts because they are malicious, you need to approve the scripts in you viris program.
+Windows will try to delete the launch.bat scripts because they are malicious, you need to approve the scripts in your antivirus program.
